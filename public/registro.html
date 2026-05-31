@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=".\css\style.css">
+</head>
+<body>
+
+      <header>
+        <h1><span class="logo">Bio</span>tech Index</h1>
+        <nav>
+        <ul class="container">
+        <li id="men"></li>
+        <li><a href="\doutrina.html">Doutrina</a></li>
+        <li id="men2"><a href="dashboard.html">Dashboard</a></li>
+        <li id="men3"><a href="index.html">Voltar</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <div style="background-image: url(./assets/banner.webp); width: 100%; height: 1080px; background-size: cover;" class="box-container">
+        <div class="box" style="padding: 40px; width: 430px; height: 500px;">
+
+    <label for="input_nome" style="font-size: 32px;">Nome:</label><br>
+    <input type="text" id="input_nome" placeholder="Nome" style="height: 32px; font-size: 32px"> <br>
+    
+    <label for="input_eficiencia" style="font-size: 32px;"> Eficiencia Metabolica:</label><br>
+    <input type="number" id="input_eficiencia" placeholder="0" style="height: 32px; font-size: 32px"> <br>
+
+    <label for="input_complexidade" style="font-size: 32px;"> Complexidade:</label><br>
+    <input type="number" id="input_complexidade" placeholder="0" style="height: 32px; font-size: 32px"> <br>
+
+    <label for="input_tipo" style="font-size: 32px;"> Tipo:</label><br>
+    <input type="number" id="input_tipo" placeholder="0" style="height: 32px; font-size: 32px"> <br>
+
+    <label for="input_descricao" style="font-size: 32px;"> Descricao:</label><br>
+    <input type="text" id="input_descricao" placeholder="0" style="height: 32px; font-size: 32px;"> <br>
+    <div id="aaEE" style="font-size: 14px; color: red;"></div>
+
+    <button onclick="verificar()" style="height: 48px; font-size: 40px;margin-top: 40px;">Enviar</button>
+
+
+
+        </div>
+    </div>
+
+    
+</body>
+</html>
+
+<script>
+    if(sessionStorage.NOME_USUARIO == undefined){
+        alert("Por favor se cadastre!")
+        window.location = "login.html";
+    }
+
+    function enviarSair(){
+        enviar(false)
+        window.location = "dashboard.html";
+    }
+
+    function verificar(){
+        let nome = input_nome.value;
+        let eficiencia = input_eficiencia.value;
+        let complexidade = input_complexidade.value;
+        let tipo = input_tipo.value;
+        let descricao = input_descricao.value;
+        console.log(nome)
+        console.log(eficiencia)
+        console.log(complexidade)
+        console.log(tipo)
+        console.log(descricao)
+
+        if(nome == '' || eficiencia == '' || complexidade == '' || tipo == '' || descricao == ''){
+            aaEE.innerHTML = "Preencha todos os campos!"
+        } else {
+            enviar(true)
+        }
+    }
+
+    function enviar(d){
+        let nome = input_nome.value;
+        let eficiencia = input_eficiencia.value;
+        let complexidade = input_complexidade.value;
+        let tipo = (input_tipo.value == 'arquitetonico');
+        let descricao = input_descricao.value;
+        if(d){
+            input_nome.value = ''; 
+            input_eficiencia.value = '';
+            input_complexidade.value = '';
+            input_tipo.value = '';
+            input_descricao.value = '';
+            }
+
+     fetch("/registro/registrar", {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idUsuarioServer: sessionStorage.ID_USUARIO,
+            nomeServer: nome,
+            eficienciaServer: eficiencia,
+            complexidadeServer: complexidade,
+            tipoServer: tipo,
+            descricaoServer: descricao
+        })
+    })
+    }
+</script>

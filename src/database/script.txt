@@ -1,0 +1,34 @@
+use api;
+
+CREATE TABLE usuario(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(45),
+email VARCHAR(45),
+senha VARCHAR(45)
+);
+
+CREATE TABLE xenogene(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(45),
+eficienciaMetabolica INT,
+complexidade INT,
+arquitetonico BOOL,
+descricao VARCHAR(200),
+fkUsuario INT,
+CONSTRAINT fk_usuario
+FOREIGN KEY (fkUsuario)
+REFERENCES usuario(id)
+);
+
+CREATE TABLE colonia(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(45),
+ideologia VARCHAR(45),
+riqueza INT,
+numeroColonos INT,
+fkUsuario INT UNIQUE,
+CONSTRAINT fk_usuario_colonia
+FOREIGN KEY (fkUsuario)
+REFERENCES usuario(id)
+);
+

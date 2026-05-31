@@ -1,0 +1,78 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--color-font);
+
+}
+
+:root {
+    --color-bg-header: rgb(24, 22, 22);
+    --color-bio: rgb(169, 255, 255);
+    --color-font: rgb(220,220,220);
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-font);
+    font-size: 20px;
+    margin-right: 40px;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+ul {
+    justify-content: flex-end;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+li {
+    list-style-type: none;
+}
+
+header{
+    background-color: var(--color-bg-header)
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
+.logo{
+    color: var(--color-bio);
+    margin-left: 40px;
+}
+
+.sair{
+    text-decoration: none;
+    
+}
+
+.box-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box{
+    width: 80%;
+    height: 800px;
+    background-color: var(--color-bg-header);
+    border-color: var(--color-font);
+    border-style: solid;
+    border-width: 2px;
+}
+

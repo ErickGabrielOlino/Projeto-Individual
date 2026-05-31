@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=".\css\style.css">
+</head>
+<body>
+    
+
+      <header>
+        <h1><span class="logo">Bio</span>tech Index</h1>
+        <nav>
+        <ul class="container">
+        <li><a href="\doutrina.html">Doutrina</a></li>
+        <li id="men4"><a href="registro.html">Registrar</a></li>
+        <li id="men4"><a href="index.html">Voltar</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <div style="background-image: url(./assets/banner.webp); width: 100%; height: 1080px; background-size: cover;" class="box-container">
+        <div class="box" style="padding: 20px;">
+
+            <div id="men"></div>
+            <div style="display: flex; justify-content: space-evenly; border-style: dashed; border-top: 2px; border-left: 2px; border-right: 2px;">
+                <div id="men2" style="display: flex; padding: 20px; "></div>
+                <div><canvas id="myChart" style="width: 600px;"></canvas></div>
+            </div>
+    
+    <div id="men3"></div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+ 
+    let listaJson = []
+    let ms = []
+
+    console.log(sessionStorage.NOME_USUARIO)
+    if(sessionStorage.NOME_USUARIO == undefined){
+        alert("Por favor se cadastre!")
+        window.location = "login.html";
+    }
+
+    fetch("/dashboard/enviardados", {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idServer: sessionStorage.ID_USUARIO
+        })
+    }).then(function (resposta){
+            if (resposta.ok){
+                resposta.json().then(json => {
+                   for (let i = 0; i < json.length; i++){
+                        listaJson[i] = json[i]
+                   }
+                   adicionar()
+                   EUODEIOFETCH()
+                   mostraKPIS()
+                });
+              
+        }});
+
+
+    function EUODEIOFETCH(){
+    const tabela = document.getElementById('myChart');
+
+    let nome = []
+    for (let i = 0; i < listaJson.length && i < 6; i++){
+        nome.push(listaJson[i].nome)
+    }
+
+    let complexidade = []
+    for (let i = 0; i < listaJson.length && i < 6; i++){
+        complexidade.push(listaJson[i].complexidade)
+        console.log(complexidade[i])
+    }
+
+    let metabolismo = []
+    for (let i = 0; i < listaJson.length && i < 6; i++){
+        metabolismo.push(listaJson[i].eficienciaMetabolica)
+    }
+
+    new Chart(tabela, {
+        type: 'bar',
+        data: {
+            labels: nome,
+            datasets: [{
+                label: 'Complexidade',
+                data: complexidade,
+                borderWitdh: 1
+            },
+                {
+                label: 'Metabolismo',
+                data: metabolismo,
+                borderWitdh: 1
+            }
+            ]
+        },
+        options:{
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    }
+
+
+        function adicionar(){
+            let men = '<div style="display: grid; width: 400px"; gap: 5px; margin>';
+            for (let i = 0; i < listaJson.length && i < 6; i++){
+                console.log("A"+ listaJson[i].complexidade)
+                men += `<div style="display: flex; justify-content: space-evenly; text-align: center;border-style: solid;border-width: 1px;" onclick="descrever(${i})"><p style="width : 100px">${listaJson[i].nome }</p><p> <img src="./assets/complexidade.png" alt="" style="width : 24px"> ${listaJson[i].complexidade}</p><p><img src="./assets/metabolismo.png" alt="" style="width : 24px"> ${listaJson[i].eficienciaMetabolica}</p></div>`
+            }
+            men2.innerHTML = men + "</div>";
+        }
+
+        function mostraKPIS(){
+            let kpi = ''
+            let efiG = 0
+            let compT = 0
+            let esp = 6;
+            let custoE = 0;
+            let val = 'Não';
+
+            for (let i = 0; i < listaJson.length; i++){
+                efiG += listaJson[i].eficienciaMetabolica;
+                compT += listaJson[i].complexidade;
+            }
+
+            if(efiG <= 5 && efiG >= -5){
+                val = 'Sim'
+            }
+
+            esp = listaJson.length*2 + compT*0.5
+            custoE = compT * 50 + listaJson.length*12.5
+
+            kpi = `Complexidade: ${compT} / Eficiencia Metabolica: ${efiG} / Espaço nescessario: ${esp} celulas / Custo Energetico: ${custoE}W / Valido: ${val} / Nome: a definir`
+            men.innerHTML = kpi;
+        }
+        
+
+        function descrever(id){
+            console.log(listaJson[id].descricao)
+            men3.innerHTML = listaJson[id].descricao
+        }
+
+</script>

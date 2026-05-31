@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=".\css\style.css">
+    <title>Document</title>
+</head>
+<body>
+      <header>
+        <h1><span class="logo">Bio</span>tech Index</h1>
+        <nav>
+        <ul class="container">
+        <li id="men"></li>
+        <li id="men2"><a href="index.html">Voltar</a></li>
+        <li id="men0"><a href="index.html">Voltar</a></li> 
+
+        </ul>
+        </nav>
+    </header>
+
+    <div style="background-image: url(./assets/outer-space.webp); width: 100%; height: 1800px; background-size: cover;" class="box-container">
+        <div class="box" style="padding: 20px; height: 1400px;">
+            <h1>Nosso valores</h1>
+            <h2>1 - A vida humana é algo sagrado:</h2>
+            <p>
+                A vida humana deve ser preservada a qualquer custo, é inaceitavel que um ser humano se oponha ao direito de outro ser humano viver. Seja por ação ou omissão, é o dever inerenete de todo o ser humano
+                proteger o proximo. A vida não humana, por sua vez, é meramente uma ferramenta em nossas mãos, temos o direito de tomar seja oque for da natureza e usarmos como bem entendermos, desde que o fim seja a
+                preservação da vida humana. Aquilo que ameaça a vida humana deve ser prontamente destruido.
+            </p>
+            <h2>2 - Um para quatro:</h2>
+            <p> A riqueza só tem valor se ela é protegida, logo para cada unidade de prata investida em agricultura, hospitais, pesquisa ou infraestrutura, temos que investir quatro em armas, armaduras, bombas, toxinas
+            ou qualquer outra ferramenta de destruição da vida. Até mesmo cães domesticados podem entrar nessa categoria, até residuos quimicos altamente toxicos, tudo que atente contra a vida é um investimento em defesa,
+            contanto que controlado por nós.
+            </p>
+            <h2>3 - A caridade não é uma virtude, é uma nescessidade:</h2>
+            <p>Para ser caridoso, é nescessario principalemente ter algo sobrando para dar. Para ter algo sobrando para dar, é nescessario ter a infraestrutura para produzir mais, para que essa infraestrutura exista, é
+            nescessario investir mais ainda em defesa, ou seja, mesmo que tenhamos o suficiente para suprir nossas nescessidades, para manter o crescimento de nosso exercito, precisamos de mais infraestrutura, a razão
+            dessa infraestrutura existir não importa, contanto que ela exista.
+            </p>
+            <h2>4 - O luxo como força motriz</h2>
+            <p>Tão qual a caridade, o luxo é fundamental para o desenvolvimento: devemos desejar, devemos almeijar cada luxo possivel, não apenas para uma questão de moral de nossos colonos, mas para que esa riqueza sirva
+            como razão para desenvolver mais armas, mais soldados, mais potencial defensivo. Uma estatua de ouro maciço deve ser protegida por um investimento enorme, uma estatua de ouro maciço deve ser colocada em uma sala
+            feita de ouro maciço, que requer um investimento maior ainda.
+            </p>
+            <h2>5 - A felicidade humana é nossa metrica:</h2>
+            <p>De nada vale sobreviver, caso essa vida seja tomada apenas por magoas: a felicidade é a força motriz da vida. Ela vem da realização, conforto, recreação e do meio social. Novamente, todos eles podem ser
+            influenciados por meio da riqueza, de uma maneira ou de outra: Um homem feio, por meio de implantes bionicos e geneticos pode se tornar um Deus grego, e dessa forma ser mais aceito socialmente, um homem 
+            abrasivo pode ter seu cerebro geneticamente modificado para se tornar mais empatico, da mesma maneira que a uma cama pode ser mais macia, uma televisão pode ter graficos melhores. E como de custume estas
+            riquezas precisam ser pautadas ao redor do poderio militar, logo, o crescimento ocorre de forma natural, movida pelo desejo humano.
+            </p>
+            <h2> 6 - O transhumanismo é fundamental:</h2>
+            <p>A criação de super-humanos, sejam eles super-soldados ou super-trabalhadores é fundamental para o crescimento acelerado e a proteção desse crescimento. Sem os xenegenes ou implantes bionicos seria impossivel
+            manter esse crescimento constante, uma vez que a produção e captção de recursos devem ser aceleradas ao seu limite, sem sobrecarregar os trabalhadores. o uso de drogas voltadas a produção e combate é extremamente
+            desejado, embora arriscado, dentre elas a força motriz é o "wake-up", que é capaz de brevemente quebrar o ciclo cicardiano sem prejudicar o usuario, removendo a nescessidade de dormir. Util tanto para trabalhadores
+            quanto soldados.
+            </p>
+            <h2>7 - Humanindade flexivel:</h2>
+            <p>Um ser humano, nos tempos modernos não pode ser definido geneticamente ou fisiologicamente, mas sim, pelo seu comportamente e capacidade de agir em prol de outros seres humanos: um homem pode perder o status de ser
+            humano, caso atente contra a vida humana, e um homem pode ganhar o status de humano, caso proteja a vida de um ser humano. Um homem não é nescessariamente um ser humano, e um ser humano não é nescessariamente um homem
+            um ser arquitetonico por exemplo pode ser considerado um ser humano, dependendo de suas ações. O mesmo vale, caso um mecanoide solitario se torne a proteger outros seres humanos. O conceito de ser humano é, fundalmentalmente
+            ligado a quem ele é, e não oque ele é. Dessa maneira, não é errado exterminar das maneiras mais brutais possiveis facções de piratas e saquadores, porque eles não se enquadram como seres humanos, o poderio militar voltado a
+            defesa pode rapidamente se tornar ofensivo, sem comprometer nosso potencial defensivo. Essa é a força de nossa doutrina, cada aumento na qualidade de vida de nossos colonos ou aliados, significa crescimento militar, que pode
+            em um piscar de olhos se voltar contra um alvo, tão importante quanto o poder militar, é nossa capacidade ideologica de arrancar o status de ser humano de alguem, e logo, tornando quaisquer atrocidades cometidas contra ele em um atrocidades
+            um meio para um fim. 
+            </p>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+     if(sessionStorage.NOME_USUARIO == undefined){
+        men.innerHTML = `<a href="cadastro.html" >Cadastro</a>`
+        men2.innerHTML = `<a href="login.html">Login</a>`
+    } else {
+        men.innerHTML = ` <a href="registro.html">registrar</a>`
+        men2.innerHTML = `<a href="dashboard.html">dashboard</a>`
+        men3.innerHTML = `<a href="index.html" onclick="sair()">Sair</a>`
+    }
+
+    function sair(){
+        sessionStorage.clear()
+        window.location = "index.html";
+    }
+</script>

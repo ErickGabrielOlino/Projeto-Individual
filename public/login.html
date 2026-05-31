@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=".\css\style.css">
+</head>
+<body>
+    
+
+    <header>
+        <h1><span class="logo">Bio</span>tech Index</h1>
+        <nav>
+        <ul class="container">
+        <li><a href="\doutrina.html">Doutrina</a></li>
+        <li id="men"></li>
+        <li id="men2"><a href="cadastro.html">Cadastro</a></li>
+        <li id="men3"><a href="index.html">Voltar</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <div style="background-image: url(./assets/banner.webp); width: 100%; height: 1080px; background-size: cover;" class="box-container">
+        <div class="box" style="width: 500px; padding: 40px; height: 400px;">
+
+    <label for="input_nome" style="font-size: 32px;">Nome:</label><br>
+    <input type="text" id="input_nome" placeholder="Nome" style="height: 32px; font-size: 32px"> <br>
+
+    <label for="input_senha" style="font-size: 32px;">Senha:</label><br>
+    <input type="password" id="input_senha" style="height: 32px; font-size: 32px"><button onclick="ver(input_senha)" style="height: 32px; font-size: 32px;height: 42px;">O</button> <br>
+
+    <button onclick="Entrar()" style="height: 48px; font-size: 40px; margin-top: 30px;">Logar</button><br><br>
+    <div id="menEr4" style="font-size: 14px; color: red;"></div>
+
+    <a href="cadastro.html" id="link" style="font-size: 16px;">Não é cadastrado?</a>
+
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    function Entrar(){
+
+        let nome = input_nome.value;
+        let senha = input_senha.value;
+        console.log(nome);
+        console.log(senha);
+
+
+          fetch("/login/login", {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            senhaServer: senha,
+            nomeServer: nome
+        })
+    }).then(function (resposta){
+            if (resposta.ok){
+                resposta.json().then(json => {
+                    if(resposta.status == 201){
+                        menEr4.innerHTML = "Usuario e/ou senha invalidos!"
+                    } else {
+                    
+                    sessionStorage.ID_USUARIO = json[0].id;
+                    sessionStorage.NOME_USUARIO = json[0].nome;
+                    sessionStorage.EMAIL_USUARIO = json[0].email;
+                    console.log(sessionStorage.NOME_USUARIO)
+                    console.log(sessionStorage.EMAIL_USUARIO)
+                    window.location = "index.html";
+                    }
+                });
+              
+        }});
+        
+    }
+
+    function ver(e){
+        if (e.type == "password"){
+            e.type = "text";
+        } else {
+            e.type = "password"
+        }
+        
+    }
+</script>

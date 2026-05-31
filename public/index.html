@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=".\css\style.css">
+</head>
+<body>
+
+     <header>
+        <h1><span class="logo">Bio</span>tech Index</h1>
+        <nav>
+        <ul class="container">
+        <li><a href="\doutrina.html">Doutrina</a></li>
+        <li id="men"></li>
+        <li id="men2"></li>
+        <li id="men3"></li>
+        </ul>
+        </nav>
+    </header>
+
+    <div style="background-image: url(./assets/outer-space.webp); width: 100%; height: 1400px; background-size: cover;" class="box-container">
+        <div class="box" style="padding: 20px; height: 1200px;">
+            <h1>Bem-Vindo a biotech Index!</h1>
+            <h2>Oque é Rimworld: Biotech?</h2>
+            <p>Laçado em 2013 Riworld é um RTS, Sandbox, de sobrevivencia e gestão de uma colonia em mundo pós-apocaliptico, onde é nescessario gerir desde os aspetos grande, como matriz energetica e agricultura,
+            quanto aspectos menores, com a saude mental e fisica de cada colono. Em 2022 foi lançada a expansão biotech, considerada pela comunidade a melhor das 5 extensões já lançadas, adicionando uma camada de
+            complexidade por meio de genes, que se tornaram um atributo de cada ser humano dentro do jogo, podendo ser alterados por meio de processos muitas vezes custusos e demorados mas que oferecem grandes benefios.
+            </p>
+            <h2>Minha historia com Rimworld</h2>
+            <p>Eu comprei rimworld em 2016, quando eu tinha apenas 13 anos. Por conta do jogo ser muito complexo, foi muito dificil sobreviver pouco mais de um ou dois anos, seja por conta de doenças, invasões ou meus colonos enloquencendo
+            e colonia entrando em caos, mas ao final de 2016 eu recebi um computador novo, oque me permitiu jogar outros jogos que eu desejava, mas não podia por conta do processamento limitado de meu computador antigo, com isso, rimworld acabou caindo no esquecimento da minha
+            biblioteca steam, até 2025, quando meu amigo, Igor, o mesmo que me indicou para a sptech, me fez uma proposta: jogar Rimworld multiplayer, com todas as expansões. E a experiencia de jogar com um amigo, em conjunto de 10 anos de atualização e 5 expansões,
+            acendeu uma nova paixão no jogo durante os anos de 2025 e 2026, algo que é refletido nas minhas horas de jogo: de 24 em 2024 para 600 hoje.
+            </p>
+            <h2>Sobre a Biotech index</h2>
+            <p>A biotech index, no contexto de rimworld é uma ferramenta de indexação de até 6 genes, Que realiza calculos em relação a eficiencia metabolica, complexidade, custo energetico e espaço nescessario para a implantação, a fim de servir como uma ferramenta enxuta,
+            tanto para gerir sua colonia real dentro do jogo, ou planejar modificações para o jogo.
+            </p>
+
+           </div>
+    </div>
+
+</body>
+</html>
+
+<script>
+    if(sessionStorage.NOME_USUARIO == undefined){
+        men.innerHTML = `<a href="cadastro.html" >Cadastro</a>`
+        men2.innerHTML = `<a href="login.html">Login</a>`
+    } else {
+        men.innerHTML = ` <a href="registro.html">registrar</a>`
+        men2.innerHTML = `<a href="dashboard.html">dashboard</a>`
+        men3.innerHTML = `<a href="index.html" onclick="sair()">Sair</a>`
+    }
+
+    function sair(){
+        sessionStorage.clear()
+        window.location = "index.html";
+    }
+</script>
